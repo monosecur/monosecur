@@ -8,7 +8,8 @@ export default async function Header() {
     const session = await getAuthSession()
 
     return (
-        <header className="z-10 fixed top-0 left-0 right-0 bg-transparent text-white p-4 flex justify-between items-center mx-10">
+
+    <header className="z-10 fixed top-0 left-0 right-0 bg-transparent text-white p-4 flex justify-between items-center mx-10">
             <div>
                 <Image
                     src="/images/MonoSecurLogoWText.png"
@@ -32,5 +33,6 @@ export default async function Header() {
                 </Link>
             </div>
         </header>
-    );
+
+)
 }
