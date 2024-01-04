@@ -52,3 +52,11 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model RPInfo {
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  forname       String
+  name          String
+  number        Int
+}

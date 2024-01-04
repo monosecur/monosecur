@@ -1,14 +1,21 @@
 import {getAuthSession} from "@/src/lib/auth";
 import {infoSession} from "@/src/info/InfoSession";
-
+import {VerifyRPInfo} from "@/src/auth/VerifyAccount";
+import {redirect} from "next/navigation";
 
 
 export default async function Logged() {
     const session = await getAuthSession();
     const userCount = await infoSession();
 
+    if (!session) {
+        return redirect("/")
+    }
+
     if (session) {
+        await VerifyRPInfo()
         return (
+            <>
             <div className="h-screen w-screen bg-slate-800 flex items-center">
                 <div className="card w-96 bg-base-100 shadow-xl ml-4">
                     <div className="card-body">
@@ -19,7 +26,8 @@ export default async function Logged() {
                         </div>
                         <h2 className="card-title flex flex-col">
                             <p className="text-lg">
-                                Connecter avec succès depuis Discord en tant que
+                                Bonjour {session.user.forname},<br/>
+                                Vous êtes connecter avec succès depuis Discord en tant que
                             </p>{" "}
                             {session.user.name}
                         </h2>
@@ -31,11 +39,12 @@ export default async function Logged() {
                     <div className="card-body">
                         <h2 className="card-title mb-6">Informations</h2>
                         <p className="mb-2">Il y a actuellement {userCount} membres connectés.</p>
-                        <p className="mb-2">Il y a actuellement 0 fonctionnaires connectés.</p>
-                        <p className="mb-2">Il y a actuellement 0 Securos stockés.</p>
+                        <p className="mb-2">Il y a actuellement null fonctionnaires connectés.</p>
+                        <p className="mb-2">Il y a actuellement null Securos stockés.</p>
                     </div>
                 </div>
             </div>
+            </>
         );
     }
 }

@@ -1,34 +1,43 @@
-import NextAuth, {NextAuthOptions} from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter"
+import NextAuth, { NextAuthOptions } from "next-auth";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/src/lib/prisma";
 import DiscordProvider from "next-auth/providers/discord";
 
-const discordId = process.env.DISCORD_CLIENT_ID
-const discordSecret = process.env.DISCORD_CLIENT_SECRET
+const discordId = process.env.DISCORD_CLIENT_ID;
+const discordSecret = process.env.DISCORD_CLIENT_SECRET;
 
-if(!discordId || !discordSecret){
-    throw new Error('Missing DISCORD_CLIENT_ID or DISCORD_CLIENT_SECRET environment !')
+if (!discordId || !discordSecret) {
+    throw new Error('Missing DISCORD_CLIENT_ID or DISCORD_CLIENT_SECRET environment !');
 }
 
-const scopes = ['identify'].join(' ')
+const scopes = ['identify'].join(' ');
 
-export const authConfig = {
+export const authConfig: NextAuthOptions = {
     providers: [
         DiscordProvider({
             clientId: discordId,
             clientSecret: discordSecret,
-            authorization: {params: {scope: scopes}},
-        })
+            authorization: { params: { scope: scopes } },
+        }),
     ],
     callbacks: {
         session: async ({ session, user }) => {
-            if(session.user){
-                session.user.id = user.id
+            if (session.user) {
+                const userWithForname = await prisma.rPInfo.findUnique({
+                    where: { userId: user.id },
+                    select: { forname: true },
+                });
+
+
+                    session.user.id = user.id;
+                if (userWithForname) {
+                    session.user.forname = userWithForname.forname;
+                }
             }
-            return session
-        }
+            return session;
+        },
     },
     adapter: PrismaAdapter(prisma) as any,
-} satisfies NextAuthOptions
+};
 
-export default NextAuth(authConfig)
+export default NextAuth(authConfig);

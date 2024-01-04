@@ -7,7 +7,7 @@ export default async function Home() {
     const session = await getAuthSession()
 
     if(session){
-        return( <Logged/> )
+        return <Logged/>
     }
     return (
         <main className="flex min-h-screen flex-col items-center justify-center bg-[#030615]">
