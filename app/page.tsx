@@ -1,8 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link'
 import Header from "@/app/components/layout/header";
+import {getServerSession} from "next-auth";
+import {authConfig} from "@/pages/api/auth/[...nextauth]";
+import {User} from "@/src/auth/User";
 
-export default function Home() {
+export default async function Home() {
+    const session = await getServerSession(authConfig)
+
+    if(session){
+        return( <User/> )
+    }
     return (
         <>
         <Header/>
