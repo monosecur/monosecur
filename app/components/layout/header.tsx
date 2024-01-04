@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import {LoginButton} from "@/src/auth/LoginButton";
+import { LoginButton } from "@/src/auth/LoginButton";
+import { LogoutButton } from "@/src/auth/LogoutButton";
+import {getAuthSession} from "@/src/lib/auth";
 
-export default function Header(){
+export default async function Header() {
+    const session = await getAuthSession()
+
     return (
-        <header
-            className="z-10 fixed top-0 left-0 right-0 bg-transparent text-white p-4 flex justify-between items-center mx-10">
+        <header className="z-10 fixed top-0 left-0 right-0 bg-transparent text-white p-4 flex justify-between items-center mx-10">
             <div>
                 <Image
                     src="/images/MonoSecurLogoWText.png"
@@ -16,9 +19,18 @@ export default function Header(){
                 />
             </div>
             <div className="flex space-x-10">
-                <LoginButton/>
-                <Link href="" className="btn">Support</Link>
+                {session ? (
+                    <>
+                    <button className="btn">Paramètres</button>
+                    <LogoutButton />
+                    </>
+                ) : (
+                    <LoginButton />
+                )}
+                <Link href="" className="btn">
+                    Support
+                </Link>
             </div>
         </header>
-    )
+    );
 }

@@ -6,6 +6,6 @@ export const LogoutButton = () => {
     return(
         <button onClick={async () => {
             await signOut()
-        }} className="bg-blue-200 btn btn-primary justify-end">Ce Déconnecter</button>
+        }} className="btn justify-end">Ce Déconnecter</button>
     )
 }

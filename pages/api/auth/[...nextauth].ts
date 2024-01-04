@@ -20,6 +20,14 @@ export const authConfig = {
             authorization: {params: {scope: scopes}},
         })
     ],
+    callbacks: {
+        session: async ({ session, user }) => {
+            if(session.user){
+                session.user.id = user.id
+            }
+            return session
+        }
+    },
     adapter: PrismaAdapter(prisma) as any,
 } satisfies NextAuthOptions
 
