@@ -53,10 +53,21 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+enum UserRole{
+  DEV
+  ADMIN
+  TREASURER
+  DISPATCH
+  OPERATOR
+  USER
+}
+
 model RPInfo {
   id            String    @id @default(cuid())
   userId        String    @unique
   forname       String
   name          String
   number        Int
+  role          UserRole  @default(USER)
+  securo        Int       @default(0)
 }

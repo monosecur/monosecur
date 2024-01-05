@@ -23,16 +23,27 @@ export const authConfig: NextAuthOptions = {
     callbacks: {
         session: async ({ session, user }) => {
             if (session.user) {
-                const userWithForname = await prisma.rPInfo.findUnique({
+
+                session.user.id = user.id;
+
+                const RPInfoUser = await prisma.rPInfo.findUnique({
                     where: { userId: user.id },
-                    select: { forname: true },
+                    select: {
+                        forname: true,
+                        name: true,
+                        number: true,
+                        role: true,
+                        securo: true},
                 });
 
-
-                    session.user.id = user.id;
-                if (userWithForname) {
-                    session.user.forname = userWithForname.forname;
+                if (RPInfoUser) {
+                    session.user.forname = RPInfoUser.forname;
+                    session.user.rpname = RPInfoUser.name;
+                    session.user.number = RPInfoUser.number;
+                    session.user.role = RPInfoUser.role;
+                    session.user.securo = RPInfoUser.securo;
                 }
+
             }
             return session;
         },

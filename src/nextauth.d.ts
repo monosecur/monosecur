@@ -5,6 +5,10 @@ declare module "next-auth" {
         user: DefaultUser & {
             id: string
             forname: string
+            rpname: string
+            number: number
+            role: string
+            securo: number
         }
     }
 }

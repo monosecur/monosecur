@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Logged from "@/app/components/main/logged";
 import {getAuthSession} from "@/src/lib/auth";
 
-export default async function Home() {
+export default async function HomePage() {
     const session = await getAuthSession()
 
     if(session){

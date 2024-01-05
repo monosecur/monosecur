@@ -1,13 +1,15 @@
 import {getAuthSession} from "@/src/lib/auth";
-import {infoSession} from "@/src/info/InfoSession";
+import {infoMemberSession, infoSecuroSession} from "@/src/info/InfoSession";
 import {VerifyRPInfo} from "@/src/auth/VerifyAccount";
 import {redirect} from "next/navigation";
 
 
 export default async function Logged() {
     const session = await getAuthSession();
-    const userCount = await infoSession();
+    const userCount = await infoMemberSession();
+    const totalSecuro = await infoSecuroSession();
 
+    console.log(session)
     if (!session) {
         return redirect("/")
     }
@@ -28,8 +30,9 @@ export default async function Logged() {
                             <p className="text-lg">
                                 Bonjour {session.user.forname},<br/>
                                 Vous êtes connecter avec succès depuis Discord en tant que
-                            </p>{" "}
+                            </p>
                             {session.user.name}
+                            <p>Vous avez {session.user.securo} Securos</p>
                         </h2>
                         <div className="card-actions justify-end"></div>
                     </div>
@@ -40,7 +43,7 @@ export default async function Logged() {
                         <h2 className="card-title mb-6">Informations</h2>
                         <p className="mb-2">Il y a actuellement {userCount} membres connectés.</p>
                         <p className="mb-2">Il y a actuellement null fonctionnaires connectés.</p>
-                        <p className="mb-2">Il y a actuellement null Securos stockés.</p>
+                        <p className="mb-2">Il y a actuellement {totalSecuro} Securos stockés.</p>
                     </div>
                 </div>
             </div>
