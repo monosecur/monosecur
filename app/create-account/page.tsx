@@ -1,7 +1,7 @@
 "use client"
 import {useState, FormEvent} from "react";
 import {useRouter} from "next/navigation";
-import {verifyRPInfoSession} from "@/src/info/redirectSession";
+import {VerifyRPInfoSession} from "@/src/info/redirectSession";
 
 export default function CreateAccountPage() {
     const [forname, setForname] = useState('');
@@ -12,7 +12,7 @@ export default function CreateAccountPage() {
 
     const router = useRouter()
 
-    verifyRPInfoSession()
+    VerifyRPInfoSession()
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();

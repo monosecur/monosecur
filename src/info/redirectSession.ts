@@ -3,7 +3,7 @@ import {useRouter} from "next/navigation";
 import {useSession} from "next-auth/react";
 
 
-export function verifyClientSession(){
+export function VerifyClientSession(){
 
     const router = useRouter()
 
@@ -14,7 +14,7 @@ export function verifyClientSession(){
     }
 }
 
-export function verifyRPInfoSession(){
+export function VerifyRPInfoSession(){
 
     const router = useRouter()
 
