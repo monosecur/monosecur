@@ -16,6 +16,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+      require("daisyui"),
+      require("@designbycode/tailwindcss-stripes")
+  ],
 }
 export default config
