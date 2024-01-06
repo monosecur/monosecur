@@ -1,7 +1,7 @@
 "use client"
 import {useState, FormEvent} from "react";
 import {useRouter} from "next/navigation";
-//import {signOut} from "next-auth/react";
+import {signOut} from "next-auth/react";
 
 export default function CreateAccountPage() {
     const [forname, setForname] = useState('');
@@ -28,6 +28,7 @@ export default function CreateAccountPage() {
 
             if (response.ok) {
                 console.log('Compte créé avec succès!');
+                await signOut()
             } else {
                 // Handle failed request
                 console.error('Erreur lors de la création du compte.');
