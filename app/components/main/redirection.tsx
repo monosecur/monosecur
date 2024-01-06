@@ -35,8 +35,8 @@ export default function Redirection() {
             ) : pathname === "/create-account" && session.data.user.role ? (
                 router.replace("/")
             ) : (
-                <>
-                </>
+               <>
+               </>
             )}
         </>
     );
