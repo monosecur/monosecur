@@ -38,7 +38,7 @@ export default async function Logged() {
                                 <button
                                     className="py-2 px-4 bg-blue-500 text-white max-w-96 h-48 rounded-xl shadow-md hover:bg-blue-700 transition duration-300">
                                     <span className="font-bold">Operator</span><br/>
-                                    Cette offre vous permet d'avoir jusqu'à 4 opérateurs et un dispatch sur votre propriété privée.
+                                    Cette offre vous permet {`d'avoir jusqu'à`} 4 opérateurs et un dispatch sur votre propriété privée.
                                 </button>
                             </a>
                         </div>
@@ -49,8 +49,8 @@ export default async function Logged() {
                                 className="py-2 px-4 bg-red-700 text-white max-w-96 h-48 rounded-xl shadow-md transition duration-300">
                                 <span className="text-yellow-500 font-bold">/!\ INDISPONIBLE /!\</span><br/>
                                 <span className="font-bold">Travel</span><br/>
-                                Cette offre vous permet d'avoir un camion de transport escorté par des opérateurs et un
-                                dispatch, pour transporter tout type de marchandise d'un point A à un point B.
+                                Cette offre vous permet {`d'avoir`} un camion de transport escorté par des opérateurs et un
+                                dispatch, pour transporter tout type de marchandise {`d'un`} point A à un point B.
                             </button>
                         </div>
                         <div className="m-4 text-center">
@@ -58,7 +58,7 @@ export default async function Logged() {
                                 className="py-2 px-4 bg-red-700 text-white max-w-96 h-48 rounded-xl shadow-md transition duration-300">
                                 <span className="text-yellow-500 font-bold">/!\ INDISPONIBLE /!\</span><br/>
                                 <span className="font-bold">Security</span><br/>
-                                Cette offre vous permet d'avoir des opérateurs et un dispatch pour vous escorter pour
+                                Cette offre vous permet {`d'avoir`} des opérateurs et un dispatch pour vous escorter pour
                                 une durée définie.
                             </button>
                         </div>
@@ -68,7 +68,7 @@ export default async function Logged() {
                                 <span
                                     className="text-yellow-500 font-bold">/!\ INDISPONIBLE AU GRAND PUBLIC /!\</span><br/>
                                 <span className="font-bold">Evacuation</span><br/>
-                                Cette offre vous permet d'avoir des opérateurs et un dispatch pour évacuer des personnes
+                                Cette offre vous permet {`d'avoir`} des opérateurs et un dispatch pour évacuer des personnes
                                 ou des biens.
                             </button>
                         </div>
@@ -78,7 +78,7 @@ export default async function Logged() {
                                 <span
                                     className="text-yellow-500 font-bold">/!\ INDISPONIBLE AU GRAND PUBLIC /!\</span><br/>
                                 <span className="font-bold">Tactical Support</span><br/>
-                                Cette offre vous permet d'avoir des opérateurs et un dispatch pour un support tactique.
+                                Cette offre vous permet {`d'avoir`} des opérateurs et un dispatch pour un support tactique.
                             </button>
                         </div>
                     </div>
