@@ -1,7 +1,5 @@
 import {getAuthSession} from "@/src/lib/auth";
 import {infoMemberSession, infoSecuroSession} from "@/src/info/InfoSession";
-import {VerifyRPInfo} from "@/src/auth/VerifyAccount";
-import {redirect} from "next/navigation";
 
 
 export default async function Logged() {
@@ -9,13 +7,8 @@ export default async function Logged() {
     const userCount = await infoMemberSession();
     const totalSecuro = await infoSecuroSession();
 
-    console.log(session)
-    if (!session) {
-        return redirect("/")
-    }
 
     if (session) {
-        await VerifyRPInfo()
         return (
             <>
             <div className="h-screen w-screen bg-slate-800 flex items-center">

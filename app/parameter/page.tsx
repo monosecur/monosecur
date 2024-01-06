@@ -2,14 +2,11 @@
 import PersonnalInformation from "@/app/components/parameter/PersonnalInformation";
 import {useState} from "react";
 import MonosecurInformation from "@/app/components/parameter/MonosecurInformation";
-//import {verifyRPInfoSession} from "@/src/info/redirectSession";
 
 
 
 export default function ParameterPage() {
     const [activeTab, setActiveTab] = useState('monoSecur');
-
-    //verifyRPInfoSession()
 
     return (
         <div className="relative h-screen bg-slate-900">

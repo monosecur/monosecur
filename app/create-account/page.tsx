@@ -1,18 +1,16 @@
 "use client"
 import {useState, FormEvent} from "react";
 import {useRouter} from "next/navigation";
-import {VerifyClientSession} from "@/src/info/redirectSession";
+import {signOut} from "next-auth/react";
 
 export default function CreateAccountPage() {
     const [forname, setForname] = useState('');
     const [name, setName] = useState('');
     const [number, setNumber] = useState<number | ''>('');
     const [isSubmitting, setIsSubmitting] = useState(false); // Nouvel état
-    //const [session, setSession] = useState<any | undefined>(undefined);
 
     const router = useRouter()
 
-    VerifyClientSession()
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -30,13 +28,12 @@ export default function CreateAccountPage() {
 
             if (response.ok) {
                 console.log('Compte créé avec succès!');
-                router.push("/")
+                await signOut()
             } else {
                 // Handle failed request
                 console.error('Erreur lors de la création du compte.');
             }
-
-            router.push("/")
+            router.refresh()
         } catch (error) {
             console.error('Erreur lors de la requête:', error);
         }
