@@ -20,7 +20,7 @@ export function VerifyRPInfoSession(){
 
     const session = useSession()
 
-        if(session.data?.user.securo === undefined){
+        if(session.data?.user.rpinfo[0].securo === undefined){
             router.push("/")
         }
 
