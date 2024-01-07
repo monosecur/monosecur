@@ -18,6 +18,6 @@ declare module "next-auth" {
         name: string
         number: number
         role: string
-        securo: number
+        securo: number | null
     }
 }
