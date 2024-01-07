@@ -31,7 +31,7 @@ export default function MonosecurInformation(){
                         <span className="label-text">Securo</span>
                         <span className="label-text-alt">Votre nombre de Securo.</span>
                     </div>
-                    <input type="text" defaultValue={session?.data?.user.rpinfo[0].securo.toString()} className="input input-bordered w-full max-w-xs"
+                    <input type="text" defaultValue={session?.data?.user.rpinfo[0].securo?.toString()} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>
                 </label>
             </div>
