@@ -26,22 +26,13 @@ export const authConfig: NextAuthOptions = {
 
                 session.user.id = user.id;
 
-                const RPInfoUser = await prisma.rPInfo.findUnique({
-                    where: { userId: user.id },
-                    select: {
-                        forname: true,
-                        name: true,
-                        number: true,
-                        role: true,
-                        securo: true},
+                const User = await prisma.user.findUnique({
+                    where: { id: user.id }
                 });
-
-                if (RPInfoUser) {
-                    session.user.forname = RPInfoUser.forname;
-                    session.user.rpname = RPInfoUser.name;
-                    session.user.number = RPInfoUser.number;
-                    session.user.role = RPInfoUser.role;
-                    session.user.securo = RPInfoUser.securo;
+                console.log("reponse db", User)
+                if (User) {
+                    session.user = user
+                    console.log(session)
                 }
 
             }

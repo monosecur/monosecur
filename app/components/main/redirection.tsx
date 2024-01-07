@@ -12,6 +12,8 @@ export default function Redirection() {
 
     const session = useSession();
 
+    console.log(session.data?.user.rpinfo)
+
     useEffect(() => {
         if (session.status === 'loading') {
             return;
@@ -30,7 +32,7 @@ export default function Redirection() {
                 </div>
             ) : !session.data ? (
                 router.replace("/")
-            ) : !session.data.user.role ? (
+            ) : !session.data.user.rpinfo ? (
                 router.replace("/create-account")
             ) : pathname === "/create-account" && session.data.user.role ? (
                 router.replace("/")

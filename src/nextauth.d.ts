@@ -4,11 +4,14 @@ declare module "next-auth" {
     interface Session extends DefaultSession {
         user: DefaultUser & {
             id: string
-            forname: string
-            rpname: string
-            number: number
-            role: string
-            securo: number
+            //rpinfo: Irpinfo[]
         }
+    }
+    interface Irpinfo{
+        forname: string
+        name: string
+        number: number
+        role: string
+        securo: number
     }
 }
