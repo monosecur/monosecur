@@ -23,7 +23,7 @@ export default function MonosecurInformation(){
                         <span className="label-text">Role</span>
                         <span className="label-text-alt">Votre role sur le site.</span>
                     </div>
-                    <input type="text" defaultValue={session?.data?.user.role} className="input input-bordered w-full max-w-xs"
+                    <input type="text" defaultValue={session?.data?.user.rpinfo[0].role} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>
                 </label>
                 <label className="form-control w-full max-w-xs">
@@ -31,7 +31,7 @@ export default function MonosecurInformation(){
                         <span className="label-text">Securo</span>
                         <span className="label-text-alt">Votre nombre de Securo.</span>
                     </div>
-                    <input type="text" defaultValue={session?.data?.user.securo.toString()} className="input input-bordered w-full max-w-xs"
+                    <input type="text" defaultValue={session?.data?.user.rpinfo[0].securo.toString()} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>
                 </label>
             </div>

@@ -6,6 +6,6 @@ export const LoginButton = () => {
     return(
         <button onClick={async () => {
             await signIn()
-        }} className="btn btn-primary justify-end">Ce connecter</button>
+        }} className="btn btn-primary justify-end">Se connecter</button>
     )
 }

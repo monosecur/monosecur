@@ -8,7 +8,7 @@ export default async function Logged() {
     const totalSecuro = await infoSecuroSession();
 
 
-    if (session) {
+    if (session && session.user && session.user.rpinfo && session.user.rpinfo.length > 0) {
         return (
             <>
                 <div className="h-screen w-screen bg-slate-800 flex flex-row justify-between items-center">
@@ -22,11 +22,11 @@ export default async function Logged() {
                             </div>
                             <h2 className="card-title flex flex-col">
                                 <p className="text-lg">
-                                    Bonjour {session.user.forname},<br/>
+                                    Bonjour {session.user.rpinfo[0].forname},<br/>
                                     Vous êtes connecté avec succès depuis Discord en tant que
                                 </p>
                                 {session.user.name}
-                                <p>Vous avez {session.user.securo} Securos</p>
+                                <p>Vous avez {session.user.rpinfo[0].securo} Securos</p>
                             </h2>
                             <div className="card-actions justify-end"></div>
                         </div>

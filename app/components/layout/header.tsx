@@ -3,22 +3,9 @@ import Link from "next/link";
 import { LoginButton } from "@/src/auth/LoginButton";
 import { LogoutButton } from "@/src/auth/LogoutButton";
 import {getAuthSession} from "@/src/lib/auth";
-import prisma from "@/src/lib/prisma";
 
 export default async function Header() {
     const session = await getAuthSession()
-
-    let existingRPInfo = null; // Initialize outside the if block
-
-    const sessionUserId = session?.user.id;
-
-    if (sessionUserId) {
-        existingRPInfo = await prisma.rPInfo.findUnique({
-            where: {
-                userId: sessionUserId,
-            },
-        });
-    }
 
     return (
 
@@ -32,8 +19,8 @@ export default async function Header() {
                     className="rounded-full"
                 />
             </Link>
-        <div className="flex space-x-10">
-            {existingRPInfo ? (
+        <div className="flex space-x-4">
+            {session?.user.rpinfo[0] ? (
                 <Link href="/parameter" className="btn">Paramètres</Link>
             ):(<></>)}
 

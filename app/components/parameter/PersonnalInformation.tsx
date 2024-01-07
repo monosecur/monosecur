@@ -7,13 +7,13 @@ export default function PersonalInformation({}: PersonalInformationProps) {
     const session = useSession();
 
     const [firstName, setFirstName] = useState<string | undefined>(
-        session.data?.user?.forname || session.data?.user.forname
+        session.data?.user?.rpinfo[0].forname || session.data?.user?.rpinfo[0].forname
     );
     const [lastName, setLastName] = useState<string | undefined>(
-        session.data?.user?.rpname || session.data?.user.rpname
+        session.data?.user?.rpinfo[0].name || session.data?.user?.rpinfo[0].name
     );
     const [phoneNumber, setPhoneNumber] = useState<number | undefined>(
-        Number(session.data?.user.number) || session.data?.user.number
+        Number(session.data?.user?.rpinfo[0].number) || session.data?.user?.rpinfo[0].number
     );
 
     const [isFirstNameModified, setIsFirstNameModified] = useState(false);
@@ -23,16 +23,16 @@ export default function PersonalInformation({}: PersonalInformationProps) {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsFirstNameModified(firstName !== session.data?.user?.forname);
-    }, [firstName, session.data?.user?.forname]);
+        setIsFirstNameModified(firstName !== session.data?.user?.rpinfo[0].forname);
+    }, [firstName, session.data?.user?.rpinfo[0].forname]);
 
     useEffect(() => {
-        setIsLastNameModified(lastName !== session.data?.user?.rpname);
-    }, [lastName, session.data?.user?.rpname]);
+        setIsLastNameModified(lastName !== session.data?.user?.rpinfo[0].name);
+    }, [lastName, session.data?.user?.rpinfo[0].name]);
 
     useEffect(() => {
-        setIsPhoneNumberModified(phoneNumber !== session.data?.user.number);
-    }, [phoneNumber, session.data?.user.number]);
+        setIsPhoneNumberModified(phoneNumber !== session.data?.user?.rpinfo[0].number);
+    }, [phoneNumber, session.data?.user?.rpinfo[0].number]);
 
     const handleUpdateField = async (field: "forname" | "name" | "number") => {
         try {

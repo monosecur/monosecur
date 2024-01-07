@@ -1,13 +1,19 @@
-import type {DefaultSession, DefaultUser} from "next-auth";
+import type {DefaultSession} from "next-auth";
 
 declare module "next-auth" {
-    interface Session extends DefaultSession {
-        user: DefaultUser & {
+    export interface Session extends DefaultSession {
+        user: {
             id: string
-            //rpinfo: Irpinfo[]
+            name: string | null
+            image: string | null
+            rpinfo: Irpinfo[]
         }
+
     }
-    interface Irpinfo{
+
+    interface Irpinfo {
+        id: string
+        userId: string
         forname: string
         name: string
         number: number

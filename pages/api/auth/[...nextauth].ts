@@ -27,12 +27,15 @@ export const authConfig: NextAuthOptions = {
                 session.user.id = user.id;
 
                 const User = await prisma.user.findUnique({
-                    where: { id: user.id }
+                    where: { id: user.id }, // Remplacez userId par l'ID de l'utilisateur que vous souhaitez récupérer
+                    include: {
+                        accounts: true,
+                        rpinfo: true,
+                        sessions: true,
+                    },
                 });
-                console.log("reponse db", User)
                 if (User) {
-                    session.user = user
-                    console.log(session)
+                    session.user = User
                 }
 
             }

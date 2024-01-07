@@ -32,9 +32,9 @@ export default function Redirection() {
                 </div>
             ) : !session.data ? (
                 router.replace("/")
-            ) : !session.data.user.rpinfo ? (
+            ) : !session.data.user.rpinfo[0] ? (
                 router.replace("/create-account")
-            ) : pathname === "/create-account" && session.data.user.role ? (
+            ) : pathname === "/create-account" && session.data.user.rpinfo[0].role ? (
                 router.replace("/")
             ) : (
                <>

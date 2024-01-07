@@ -9,6 +9,6 @@ export const LogoutButton = () => {
         <button onClick={async () => {
             router.push("/")
             await signOut()
-        }} className="btn justify-end">Ce Déconnecter</button>
+        }} className="btn justify-end">Se Déconnecter</button>
     )
 }
