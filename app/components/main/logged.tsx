@@ -1,5 +1,6 @@
 import {getAuthSession} from "@/src/lib/auth";
 import {infoMemberSession, infoSecuroSession} from "@/src/info/InfoSession";
+import Link from "next/link";
 
 
 export default async function Logged() {
@@ -34,17 +35,17 @@ export default async function Logged() {
 
                     <div className="grid grid-cols-2 gap-4 justify-center bg-slate-400 rounded-xl mt-24">
                         <div className="m-4 text-center">
-                            <a href="offer/operator">
+                            <Link href="offer/operator">
                                 <button
                                     className="py-2 px-4 bg-blue-500 text-white max-w-96 h-48 rounded-xl shadow-md hover:bg-blue-700 transition duration-300">
                                     <span className="font-bold">Operator</span><br/>
                                     Cette offre vous permet {`d'avoir jusqu'à`} 4 opérateurs et un dispatch sur votre propriété privée.
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                         <div className="m-4 text-center py-2 px-4 bg-slate-400 text-white max-w-96 h-48">
                         </div>
-                        <div className="m-4 text-center">
+                        <div className="m-4 text-center pointer-events-none">
                             <button
                                 className="py-2 px-4 bg-red-700 text-white max-w-96 h-48 rounded-xl shadow-md transition duration-300">
                                 <span className="text-yellow-500 font-bold">/!\ INDISPONIBLE /!\</span><br/>
@@ -53,7 +54,7 @@ export default async function Logged() {
                                 dispatch, pour transporter tout type de marchandise {`d'un`} point A à un point B.
                             </button>
                         </div>
-                        <div className="m-4 text-center">
+                        <div className="m-4 text-center pointer-events-none">
                             <button
                                 className="py-2 px-4 bg-red-700 text-white max-w-96 h-48 rounded-xl shadow-md transition duration-300">
                                 <span className="text-yellow-500 font-bold">/!\ INDISPONIBLE /!\</span><br/>
@@ -62,7 +63,7 @@ export default async function Logged() {
                                 une durée définie.
                             </button>
                         </div>
-                        <div className="m-4 text-center">
+                        <div className="m-4 text-center pointer-events-none">
                             <button
                                 className="stripes stripes-red-600 stripes-size-xl stripes-opacity-50 py-2 px-4 bg-red-800 text-white max-w-96 h-48 rounded-xl shadow-md transition duration-300">
                                 <span
@@ -72,7 +73,7 @@ export default async function Logged() {
                                 ou des biens.
                             </button>
                         </div>
-                        <div className="m-4 text-center">
+                        <div className="m-4 text-center pointer-events-none">
                             <button
                                 className="stripes stripes-red-600 stripes-size-xl stripes-opacity-50 stripes-accent-content py-2 px-4 bg-red-800 text-white max-w-96 h-48 rounded-xl shadow-md transition duration-300">
                                 <span

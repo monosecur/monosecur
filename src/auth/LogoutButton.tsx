@@ -7,8 +7,8 @@ export const LogoutButton = () => {
     const router = useRouter()
     return(
         <button onClick={async () => {
-            router.push("/")
             await signOut()
+            router.push("/")
         }} className="btn justify-end">Se Déconnecter</button>
     )
 }

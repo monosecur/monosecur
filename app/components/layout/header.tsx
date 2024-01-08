@@ -16,7 +16,7 @@ export default async function Header() {
                     alt="Support Image"
                     width={200}
                     height={200}
-                    className="rounded-full"
+                    className="rounded-full hover:saturate-0 hover:scale-105 transition duration-300 ease-in-out"
                 />
             </Link>
         <div className="flex space-x-4">

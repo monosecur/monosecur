@@ -12,16 +12,16 @@ export default function MonosecurInformation(){
                 <h2 className="card-title mb-6">Compte Mono Secur</h2>
                 <label className="form-control w-full max-w-xs">
                     <div className="label">
-                        <span className="label-text">UserId</span>
-                        <span className="label-text-alt">Votre Id Mono Secur.</span>
+                        <span className="label-text">Identifiant</span>
+                        <span className="label-text-alt">Votre id Mono Secur.</span>
                     </div>
                     <input type="text" defaultValue={session.data?.user.id} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>
                 </label>
                 <label className="form-control w-full max-w-xs">
                     <div className="label">
-                        <span className="label-text">Role</span>
-                        <span className="label-text-alt">Votre role sur le site.</span>
+                        <span className="label-text">Rang</span>
+                        <span className="label-text-alt">Votre rang dans la structure.</span>
                     </div>
                     <input type="text" defaultValue={session?.data?.user.rpinfo[0].role} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>

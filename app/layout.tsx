@@ -7,6 +7,7 @@ import Header from "@/app/components/layout/header";
 import React from "react";
 import {NextAuthProvider} from "@/src/auth/NextAuthProvider";
 import Redirection from "@/app/components/main/redirection";
+import Providers from "@/app/redux/Provider";
 
 //const inter = Inter({ subsets: ['latin'] })
 const robotomono = Roboto_Mono({
@@ -26,12 +27,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={robotomono.className}>
+      <Providers>
       <NextAuthProvider>
           <Redirection/>
       <Header/>
         {children}
         <SpeedInsights />
       </NextAuthProvider>
+      </Providers>
       </body>
     </html>
   )

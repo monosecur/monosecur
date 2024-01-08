@@ -11,7 +11,6 @@ export default function Redirection() {
     const [isLoading, setIsLoading] = useState(true);
 
     const session = useSession();
-
     console.log(session.data?.user.rpinfo)
 
     useEffect(() => {

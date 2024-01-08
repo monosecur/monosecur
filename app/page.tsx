@@ -5,7 +5,6 @@ import {getAuthSession} from "@/src/lib/auth";
 
 export default async function HomePage() {
     const session = await getAuthSession()
-
     if(session){
         return <Logged/>
     }

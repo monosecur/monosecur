@@ -114,15 +114,18 @@ const OperatorPage = () => {
                             </button>
                         </div>
                         <span className="label-text">Temps de garde</span>
-                        <input
-                            type="number"
-                            value={result}
-                            disabled
-                            className="input input-bordered input-primary w-full max-w-xs"
-                        />
+                        <div className="form-value flex items-center space-x-2 mb-4">
+                            <input
+                                type="number"
+                                value={result}
+                                disabled
+                                className="input input-bordered input-primary w-full max-w-xs"
+                            />
+                        </div>
+
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn btn-primary text-gray-200">Buy Now</button>
                     </div>
                 </div>
             </div>

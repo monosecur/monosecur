@@ -20,7 +20,7 @@ export default function ParameterPage() {
                             }`}
                             onClick={() => setActiveTab('personalInfo')}
                         >
-                            Information Personnel
+                             Informations personnelles
                         </div>
                         <div
                             className={`max-w-64 h-24 flex justify-center items-center rounded-md cursor-pointer bg-slate-800 ${
