@@ -20,7 +20,7 @@ export default async function Header() {
                 />
             </Link>
         <div className="flex space-x-4">
-            {session?.user.rpinfo[0] ? (
+            {session?.user.rpinfo ? (
                 <Link href="/parameter" className="btn">Paramètres</Link>
             ):(<></>)}
 

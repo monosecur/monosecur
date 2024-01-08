@@ -4,14 +4,16 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FaGear } from "react-icons/fa6";
 import { useSession } from "next-auth/react";
+import {useDispatch} from "react-redux";
+import {setUser} from "@/app/redux/slices/userSlice";
 
 export default function Redirection() {
     const pathname = usePathname();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
+    const dispatch = useDispatch();
 
     const session = useSession();
-    console.log(session.data?.user.rpinfo)
 
     useEffect(() => {
         if (session.status === 'loading') {
@@ -20,6 +22,11 @@ export default function Redirection() {
 
         setIsLoading(false);
 
+        if (session.data?.user) {
+            dispatch(setUser(session.data.user));
+        } else {
+            console.log("ERR")
+        }
     }, [pathname, session]);
 
     return (
@@ -31,9 +38,9 @@ export default function Redirection() {
                 </div>
             ) : !session.data ? (
                 router.replace("/")
-            ) : !session.data.user.rpinfo[0] ? (
+            ) : !session.data.user.rpinfo ? (
                 router.replace("/create-account")
-            ) : pathname === "/create-account" && session.data.user.rpinfo[0].role ? (
+            ) : pathname === "/create-account" && session.data.user.rpinfo.role ? (
                 router.replace("/")
             ) : (
                <>

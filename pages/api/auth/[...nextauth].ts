@@ -10,6 +10,7 @@ if (!discordId || !discordSecret) {
     throw new Error('Missing DISCORD_CLIENT_ID or DISCORD_CLIENT_SECRET environment !');
 }
 
+
 const scopes = ['identify'].join(' ');
 
 export const authConfig: NextAuthOptions = {
@@ -27,13 +28,14 @@ export const authConfig: NextAuthOptions = {
                 session.user.id = user.id;
 
                 const User = await prisma.user.findUnique({
-                    where: { id: user.id }, // Remplacez userId par l'ID de l'utilisateur que vous souhaitez récupérer
+                    where: { id: user.id },
                     include: {
                         accounts: true,
                         rpinfo: true,
                         sessions: true,
                     },
                 });
+
                 if (User) {
                     session.user = User
                 }

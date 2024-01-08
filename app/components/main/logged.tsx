@@ -1,16 +1,22 @@
-import {getAuthSession} from "@/src/lib/auth";
-import {infoMemberSession, infoSecuroSession} from "@/src/info/InfoSession";
+'use client'
 import Link from "next/link";
+import {useSelector} from "react-redux";
+import InformationCard from "@/app/components/main/logged_components/infocard";
 
 
-export default async function Logged() {
-    const session = await getAuthSession();
-    const userCount = await infoMemberSession();
-    const totalSecuro = await infoSecuroSession();
+export default function Logged() {
+
+    const user = useSelector((state: any) => state.user.user);
+
+    if (!user || !user.rpinfo) {
+        console.log("Loading...");
+        return <p>Loading...</p>;
+    }
+
+    console.log("Rendering with user data:", user);
 
 
-    if (session && session.user && session.user.rpinfo && session.user.rpinfo.length > 0) {
-        return (
+    return (
             <>
                 <div className="h-screen w-screen bg-slate-800 flex flex-row justify-between items-center">
 
@@ -18,16 +24,16 @@ export default async function Logged() {
                         <div className="card-body">
                             <div className="avatar">
                                 <div className="w-24 rounded">
-                                    <img src={session.user.image ?? ""} alt="User Avatar"/>
+                                    <img src={user.image ?? ""} alt="User Avatar"/>
                                 </div>
                             </div>
                             <h2 className="card-title flex flex-col">
                                 <p className="text-lg">
-                                    Bonjour {session.user.rpinfo[0].forname},<br/>
+                                    Bonjour {user.rpinfo.forname},<br/>
                                     Vous êtes connecté avec succès depuis Discord en tant que
                                 </p>
-                                {session.user.name}
-                                <p>Vous avez {session.user.rpinfo[0].securo} Securos</p>
+                                {user.name}
+                                <p>Vous avez {user.rpinfo.securo} Securos</p>
                             </h2>
                             <div className="card-actions justify-end"></div>
                         </div>
@@ -85,17 +91,9 @@ export default async function Logged() {
                     </div>
 
 
-                    <div className="card w-96 bg-base-100 shadow-xl m-4">
-                        <div className="card-body">
-                            <h2 className="card-title mb-6">Informations</h2>
-                            <p className="mb-2">Il y a actuellement {userCount} membres connectés.</p>
-                            <p className="mb-2">Il y a actuellement null fonctionnaires connectés.</p>
-                            <p className="mb-2">Il y a actuellement {totalSecuro} Securos stockés.</p>
-                        </div>
-                    </div>
+                    <InformationCard />
                 </div>
             </>
 
         );
-    }
 }

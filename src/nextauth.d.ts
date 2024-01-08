@@ -6,7 +6,7 @@ declare module "next-auth" {
             id: string
             name: string | null
             image: string | null
-            rpinfo: Irpinfo[]
+            rpinfo: Irpinfo | null
         }
 
     }

@@ -1,19 +1,24 @@
-import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import {useSelector} from "react-redux";
 
 interface PersonalInformationProps {}
 
 export default function PersonalInformation({}: PersonalInformationProps) {
-    const session = useSession();
+    const user = useSelector((state: any) => state.user.user);
+
+    if (!user || !user.rpinfo) {
+        console.log("Loading...");
+        return <p>Loading...</p>;
+    }
 
     const [firstName, setFirstName] = useState<string | undefined>(
-        session.data?.user?.rpinfo[0].forname || session.data?.user?.rpinfo[0].forname
+        user?.rpinfo?.forname || user?.rpinfo?.forname
     );
     const [lastName, setLastName] = useState<string | undefined>(
-        session.data?.user?.rpinfo[0].name || session.data?.user?.rpinfo[0].name
+        user?.rpinfo?.name || user?.rpinfo?.name
     );
     const [phoneNumber, setPhoneNumber] = useState<number | undefined>(
-        Number(session.data?.user?.rpinfo[0].number) || session.data?.user?.rpinfo[0].number
+        Number(user?.rpinfo?.number) || user?.rpinfo?.number
     );
 
     const [isFirstNameModified, setIsFirstNameModified] = useState(false);
@@ -23,16 +28,16 @@ export default function PersonalInformation({}: PersonalInformationProps) {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsFirstNameModified(firstName !== session.data?.user?.rpinfo[0].forname);
-    }, [firstName, session.data?.user?.rpinfo[0].forname]);
+        setIsFirstNameModified(firstName !== user?.rpinfo?.forname);
+    }, [firstName, user?.rpinfo?.forname]);
 
     useEffect(() => {
-        setIsLastNameModified(lastName !== session.data?.user?.rpinfo[0].name);
-    }, [lastName, session.data?.user?.rpinfo[0].name]);
+        setIsLastNameModified(lastName !== user?.rpinfo?.name);
+    }, [lastName, user?.rpinfo?.name]);
 
     useEffect(() => {
-        setIsPhoneNumberModified(phoneNumber !== session.data?.user?.rpinfo[0].number);
-    }, [phoneNumber, session.data?.user?.rpinfo[0].number]);
+        setIsPhoneNumberModified(phoneNumber !== user?.rpinfo?.number);
+    }, [phoneNumber, user?.rpinfo?.number]);
 
     const handleUpdateField = async (field: "forname" | "name" | "number") => {
         try {

@@ -48,7 +48,7 @@ model User {
   emailVerified DateTime?
   image         String?
   accounts      Account[]
-  rpinfo        RPInfo[]
+  rpinfo        RPInfo?
   sessions      Session[]
 }
 

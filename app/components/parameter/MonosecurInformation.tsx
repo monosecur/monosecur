@@ -1,9 +1,14 @@
-import {useSession} from "next-auth/react";
+import {useSelector} from "react-redux";
 
 
 export default function MonosecurInformation(){
 
-    const session = useSession()
+    const user = useSelector((state: any) => state.user.user);
+
+    if (!user || !user.rpinfo) {
+        console.log("Loading...");
+        return <p>Loading...</p>;
+    }
 
 
     return (
@@ -15,7 +20,7 @@ export default function MonosecurInformation(){
                         <span className="label-text">Identifiant</span>
                         <span className="label-text-alt">Votre id Mono Secur.</span>
                     </div>
-                    <input type="text" defaultValue={session.data?.user.id} className="input input-bordered w-full max-w-xs"
+                    <input type="text" defaultValue={user.id} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>
                 </label>
                 <label className="form-control w-full max-w-xs">
@@ -23,7 +28,7 @@ export default function MonosecurInformation(){
                         <span className="label-text">Rang</span>
                         <span className="label-text-alt">Votre rang dans la structure.</span>
                     </div>
-                    <input type="text" defaultValue={session?.data?.user.rpinfo[0].role} className="input input-bordered w-full max-w-xs"
+                    <input type="text" defaultValue={user.rpinfo?.role} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>
                 </label>
                 <label className="form-control w-full max-w-xs">
@@ -31,7 +36,7 @@ export default function MonosecurInformation(){
                         <span className="label-text">Securo</span>
                         <span className="label-text-alt">Votre nombre de Securo.</span>
                     </div>
-                    <input type="text" defaultValue={session?.data?.user.rpinfo[0].securo?.toString()} className="input input-bordered w-full max-w-xs"
+                    <input type="text" defaultValue={user.rpinfo?.securo?.toString()} className="input input-bordered w-full max-w-xs"
                            readOnly={true}/>
                 </label>
             </div>
