@@ -7,8 +7,8 @@ export default function PersonalInformation({}: PersonalInformationProps) {
     const user = useSelector((state: any) => state.user.user);
 
     if (!user || !user.rpinfo) {
-        console.log("Loading...");
-        return <p>Loading...</p>;
+        //console.log("Loading...");
+        return <></>;
     }
 
     const [firstName, setFirstName] = useState<string | undefined>(

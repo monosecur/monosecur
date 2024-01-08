@@ -9,11 +9,11 @@ export default function Logged() {
     const user = useSelector((state: any) => state.user.user);
 
     if (!user || !user.rpinfo) {
-        console.log("Loading...");
-        return <p>Loading...</p>;
+        //console.log("Loading...");
+        return <></>;
     }
 
-    console.log("Rendering with user data:", user);
+    //console.log("Rendering with user data:", user);
 
 
     return (
